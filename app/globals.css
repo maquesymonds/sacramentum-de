@@ -1,0 +1,333 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Sacramentum Advisors — Global Styles
+   Design system: premium, editorial, minimal, wealth-advisory
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Font: Regola ──────────────────────────────────────────────────────────── */
+/* Regola is loaded via next/font/local in layout.tsx.                         */
+/* The CSS variable --font-regola is injected by Next.js at runtime.           */
+
+/* ── CSS Design Tokens ─────────────────────────────────────────────────────── */
+:root {
+  /* Brand palette */
+  --color-dark:    #111F30;
+  --color-blue:    #81A6B0;
+  --color-olive:   #AAA462;
+  --color-warm:    #CCA87C;
+
+  /* Surfaces */
+  --color-surface:      #FAFAF8;
+  --color-surface-muted:#F3F2EE;
+  --color-surface-card: #FFFFFF;
+
+  /* Ink */
+  --color-ink:       #111F30;
+  --color-ink-muted: #4A5568;
+  --color-ink-subtle:#718096;
+  --color-ink-ghost: #A0AEC0;
+
+  /* Layout */
+  --max-width-site: 1440px;
+  --section-padding-y: 7rem;
+  --section-padding-y-sm: 4.5rem;
+  --container-padding-x: clamp(1.25rem, 3.5vw, 3rem);
+
+  /* Easing */
+  --ease-premium:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft-out:  cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-editorial: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Nav */
+  --nav-height: 80px;
+}
+
+/* ── Base Reset & Defaults ─────────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    /* scroll-behavior: smooth is intentionally OFF — Lenis owns all scrolling.
+       Native smooth-scroll would double-smooth and feel sluggish / fight Lenis. */
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-regola), Georgia, serif;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-ink);
+    background-color: var(--color-surface);
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-regola), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Images */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Focus styles — accessible but elegant */
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(129, 166, 176, 0.25);
+    color: var(--color-ink);
+  }
+}
+
+/* ── Utility Layer ─────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Container */
+  .container-site {
+    width: 100%;
+    max-width: var(--max-width-site);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding-x);
+    padding-right: var(--container-padding-x);
+  }
+
+  /* Section vertical rhythm */
+  .section-padding {
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
+  }
+  .section-padding-sm {
+    padding-top: var(--section-padding-y-sm);
+    padding-bottom: var(--section-padding-y-sm);
+  }
+
+  /* Typography utilities */
+  .text-display-xl { font-size: 4rem;    line-height: 1.05; letter-spacing: -0.03em; }
+  .text-display    { font-size: 3.5rem;  line-height: 1.05; letter-spacing: -0.03em; }
+  .text-h2         { font-size: 2.5rem;  line-height: 1.15; letter-spacing: -0.02em; }
+  .text-h3         { font-size: 1.75rem; line-height: 1.25; letter-spacing: -0.01em; }
+  .text-h4         { font-size: 1.375rem;line-height: 1.3;  letter-spacing: -0.01em; }
+  .text-body-lg    { font-size: 1.25rem; line-height: 1.65; }
+  .text-body       { font-size: 1.125rem;line-height: 1.7;  }
+  .text-small      { font-size: 0.875rem;line-height: 1.6;  }
+  .text-caption    { font-size: 0.75rem; line-height: 1.5;  letter-spacing: 0.06em; }
+
+  /* Eyebrow / label style */
+  .text-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Gold / warm accent line */
+  .accent-line {
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background-color: var(--color-warm);
+  }
+
+  /* Horizontal divider */
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(31, 41, 51, 0.08);
+  }
+
+  /* Overlay helpers */
+  .overlay-dark-40  { background: rgba(31, 41, 51, 0.40); }
+  .overlay-dark-60  { background: rgba(31, 41, 51, 0.60); }
+  .overlay-dark-70  { background: rgba(31, 41, 51, 0.70); }
+  .overlay-warm-10  { background: rgba(204, 168, 124, 0.10); }
+  .overlay-blue-10  { background: rgba(129, 166, 176, 0.10); }
+}
+
+/* ── Scroll Reveal — JS-driven classes ────────────────────────────────────── */
+/*   Applied via useScrollReveal hook. Initial state = invisible.              */
+.sr-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.sr-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s var(--ease-premium), transform 0.8s var(--ease-premium);
+}
+
+.sr-hidden-left {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+
+.sr-visible-left {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.8s var(--ease-premium), transform 0.8s var(--ease-premium);
+}
+
+.sr-hidden-scale {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+.sr-visible-scale {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium);
+}
+
+/* ── Parallax container ─────────────────────────────────────────────────────── */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-image {
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* ── Nav states ─────────────────────────────────────────────────────────────── */
+.nav-scrolled {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ── Scroll hint pulse ───────────────────────────────────────────────────────── */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.7; transform: scaleY(1);   }
+  50%       { opacity: 0.3; transform: scaleY(0.6); }
+}
+
+/* ── News/CTA wrapper: mobile-only gradient background ──────────────────────── */
+.news-cta-wrapper {
+  background: linear-gradient(to bottom, var(--color-surface) 0%, #111F30 55%);
+}
+@media (min-width: 1024px) {
+  .news-cta-wrapper {
+    background: none;
+  }
+}
+
+/* ── Button base styles ─────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: var(--color-warm);
+  color: var(--color-dark);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-warm);
+  border-radius: 50px;
+  transition: background-color 0.3s var(--ease-premium),
+              color 0.3s var(--ease-premium),
+              border-color 0.3s var(--ease-premium);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-warm);
+  border-color: var(--color-warm);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: transparent;
+  color: #FAFAF8;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(250, 250, 248, 0.5);
+  border-radius: 50px;
+  transition: background-color 0.3s var(--ease-premium),
+              border-color 0.3s var(--ease-premium);
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  background-color: rgba(250, 250, 248, 0.08);
+  border-color: rgba(250, 250, 248, 0.9);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar         { width: 6px; }
+::-webkit-scrollbar-track   { background: var(--color-surface-muted); }
+::-webkit-scrollbar-thumb   { background: rgba(129, 166, 176, 0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(129, 166, 176, 0.7); }
+
+/* ── Lenis smooth scroll ────────────────────────────────────────────────────── */
+/* Required resets so Lenis can control scroll position without fighting the    */
+/* browser's own overflow/height model.                                         */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+/* Lenis adds this class while scrolling — force scroll-behavior off so the    */
+/* browser doesn't try to animate on top of what Lenis is already animating.   */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Elements marked data-lenis-prevent get native scroll (modals, code blocks) */
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* When Lenis is stopped (e.g. modal open) lock the page */
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Prevent pointer events on iframes while Lenis is scrolling — avoids        */
+/* iframe stealing pointer during wheel gestures.                              */
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ── Mobile-only overrides (max 1023px) ───────────────────────────────────── */
+@media (max-width: 1023px) {
+  .hero-cta {
+    padding:   0.75rem 1.75rem !important;
+    font-size: 0.875rem !important;
+  }
+}
