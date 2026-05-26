@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from "react";
 import { gsap }          from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useT } from "@/lib/locale-context";
+import { useT, useLocale } from "@/lib/locale-context";
 import { padStart } from "@/lib/utils";
 import { useRouter }    from "next/navigation";
 import { useCharReveal } from "@/hooks/useCharReveal";
@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function HowWeSupport() {
   const router = useRouter();
+  const { locale } = useLocale();
   const copy  = useT().howWeSupport;
   const cards = copy.cards;
 
@@ -310,7 +311,7 @@ export default function HowWeSupport() {
         <div className="container-site lg:py-14 py-8">
           <div className="lg:pt-10 lg:border-t lg:border-ink/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <p className="text-body text-ink-muted max-w-[440px]">
-              Every engagement begins with a private, no-commitment conversation about your objectives.
+              {locale === "de" ? "Jede Zusammenarbeit beginnt mit einem vertraulichen, unverbindlichen Gespräch über Ihre Ziele." : "Every engagement begins with a private, no-commitment conversation about your objectives."}
             </p>
             <button onClick={() => router.push("/contact")} className="btn-primary whitespace-nowrap flex-shrink-0">
               {copy.cta}

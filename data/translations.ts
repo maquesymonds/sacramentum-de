@@ -732,7 +732,7 @@ const de: SiteTranslations = {
     eyebrow:     "Unsere Unterstützung",
     headline:    "Wie wir Sie begleiten",
     subheadline: "Von Marktintelligenz und Transaktionsstrukturierung bis hin zu Aufenthaltsgenehmigung, lokaler Etablierung und langfristiger Kapitalpositionierung begleitet unser Team Sie in jeder Phase Ihres Markteintritts in Uruguay.",
-    cta:         "Privates Beratungsgespräch vereinbaren",
+    cta:         "Beratungsgespräch vereinbaren",
     cards: [
       {
         id:          "soft-landing",
